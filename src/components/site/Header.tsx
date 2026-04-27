@@ -1,9 +1,9 @@
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { to: "/", label: "Home" },
+  { to: "/", label: "Home", end: true },
   { to: "/products", label: "Products" },
   { to: "/franchise", label: "Franchise" },
   { to: "/events", label: "Events" },
@@ -26,15 +26,16 @@ export function Header() {
 
         <nav className="hidden lg:flex items-center gap-7">
           {links.map((l) => (
-            <Link
+            <NavLink
               key={l.to}
               to={l.to}
-              className="text-sm text-foreground/80 hover:text-foreground transition"
-              activeProps={{ className: "text-foreground font-medium" }}
-              activeOptions={{ exact: l.to === "/" }}
+              end={l.end}
+              className={({ isActive }) =>
+                `text-sm transition ${isActive ? "text-foreground font-medium" : "text-foreground/80 hover:text-foreground"}`
+              }
             >
               {l.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
@@ -55,16 +56,17 @@ export function Header() {
         <div className="lg:hidden border-t border-border bg-background">
           <nav className="container-x flex flex-col py-4">
             {links.map((l) => (
-              <Link
+              <NavLink
                 key={l.to}
                 to={l.to}
+                end={l.end}
                 onClick={() => setOpen(false)}
-                className="py-3 text-base text-foreground/80"
-                activeProps={{ className: "text-foreground font-medium" }}
-                activeOptions={{ exact: l.to === "/" }}
+                className={({ isActive }) =>
+                  `py-3 text-base ${isActive ? "text-foreground font-medium" : "text-foreground/80"}`
+                }
               >
                 {l.label}
-              </Link>
+              </NavLink>
             ))}
           </nav>
         </div>
