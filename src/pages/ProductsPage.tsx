@@ -88,3 +88,5 @@ function ProductsPage() {
     </SiteLayout>
   );
 }
+
+export default ProductsPage;

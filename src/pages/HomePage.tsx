@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { ArrowRight, Snowflake, Flame, ShoppingBag, MapPin, Users, Sparkles, TrendingUp, Wrench } from "lucide-react";
 import heroImg from "@/assets/hero-empanada.jpg";
@@ -225,3 +226,5 @@ function HomePage() {
     </SiteLayout>
   );
 }
+
+export default HomePage;

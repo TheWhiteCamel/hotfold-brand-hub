@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { useState } from "react";
 import { z } from "zod";
@@ -107,3 +108,5 @@ function Field({ label, name, type = "text", required, textarea }: {
     </label>
   );
 }
+
+export default ContactPage;

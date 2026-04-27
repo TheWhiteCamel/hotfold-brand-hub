@@ -170,3 +170,5 @@ function Field({ label, name, type = "text", required, textarea }: {
     </label>
   );
 }
+
+export default FranchisePage;

@@ -142,3 +142,5 @@ function Field({ label, name, type = "text", required }: { label: string; name: 
     </label>
   );
 }
+
+export default EventsPage;

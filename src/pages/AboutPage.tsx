@@ -74,3 +74,5 @@ function AboutPage() {
     </SiteLayout>
   );
 }
+
+export default AboutPage;

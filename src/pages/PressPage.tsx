@@ -62,3 +62,5 @@ function PressPage() {
     </SiteLayout>
   );
 }
+
+export default PressPage;
