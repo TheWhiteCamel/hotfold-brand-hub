@@ -1,22 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { useState } from "react";
 import { z } from "zod";
 import { CheckCircle2, TrendingUp, Layers, Building2, Globe } from "lucide-react";
 import kioskImg from "@/assets/kiosk.jpg";
+import { Helmet } from "react-helmet-async";
 
-export const Route = createFileRoute("/franchise")({
-  head: () => ({
-    meta: [
-      { title: "Franchise — HotFold" },
-      { name: "description", content: "Open a HotFold kiosk. Fast-food speed, gourmet positioning. Low CAPEX, high turnover, built to scale." },
-      { property: "og:title", content: "Franchise with HotFold" },
-      { property: "og:description", content: "Join the empanada kiosk concept." },
-      { property: "og:image", content: kioskImg },
-    ],
-  }),
-  component: FranchisePage,
-});
+
+
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name required").max(100),
@@ -49,6 +39,12 @@ function FranchisePage() {
 
   return (
     <SiteLayout>
+      <Helmet>
+        <title>Franchise — HotFold</title>
+        <meta name="description" content="Open a HotFold kiosk. Fast-food speed, gourmet positioning. Low CAPEX, high turnover, built to scale." />
+        <meta property="og:title" content="Franchise — HotFold" />
+        <meta property="og:description" content="Open a HotFold kiosk. Fast-food speed, gourmet positioning. Low CAPEX, high turnover, built to scale." />
+      </Helmet>
       {/* Hero */}
       <section className="relative overflow-hidden bg-ink text-bone">
         <img src={kioskImg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" />
@@ -174,3 +170,5 @@ function Field({ label, name, type = "text", required, textarea }: {
     </label>
   );
 }
+
+export default FranchisePage;

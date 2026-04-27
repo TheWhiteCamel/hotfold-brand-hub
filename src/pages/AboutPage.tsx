@@ -1,22 +1,19 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import trio from "@/assets/empanadas-trio.jpg";
+import { Helmet } from "react-helmet-async";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — HotFold" },
-      { name: "description", content: "The story behind HotFold — from Valencia memory to Budapest reality." },
-      { property: "og:title", content: "About HotFold" },
-      { property: "og:description", content: "Our story, our values, our concept." },
-    ],
-  }),
-  component: AboutPage,
-});
+
+
 
 function AboutPage() {
   return (
     <SiteLayout>
+      <Helmet>
+        <title>About — HotFold</title>
+        <meta name="description" content="The story behind HotFold — from Valencia memory to Budapest reality." />
+        <meta property="og:title" content="About — HotFold" />
+        <meta property="og:description" content="The story behind HotFold — from Valencia memory to Budapest reality." />
+      </Helmet>
       <section className="bg-ink text-bone">
         <div className="container-x py-20 md:py-28">
           <p className="eyebrow eyebrow-gold">About</p>
@@ -77,3 +74,5 @@ function AboutPage() {
     </SiteLayout>
   );
 }
+
+export default AboutPage;

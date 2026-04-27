@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import beef from "@/assets/product-beef.jpg";
 import chicken from "@/assets/product-chicken.jpg";
@@ -7,18 +6,10 @@ import apple from "@/assets/product-apple.jpg";
 import ham from "@/assets/product-ham.jpg";
 import veggie from "@/assets/product-veggie.jpg";
 import { Leaf, Beef, Cookie } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
-export const Route = createFileRoute("/products")({
-  head: () => ({
-    meta: [
-      { title: "Products — HotFold Empanadas" },
-      { name: "description", content: "Twelve baked empanada flavors — meat, vegetarian, sweet. Crafted for taste, engineered for speed." },
-      { property: "og:title", content: "HotFold Products" },
-      { property: "og:description", content: "Browse our full empanada range." },
-    ],
-  }),
-  component: ProductsPage,
-});
+
+
 
 type Item = { name: string; desc: string; img: string; cat: "meat" | "veg" | "sweet"; tags?: string[] };
 
@@ -42,6 +33,12 @@ const cats = [
 function ProductsPage() {
   return (
     <SiteLayout>
+      <Helmet>
+        <title>Products — HotFold Empanadas</title>
+        <meta name="description" content="Twelve baked empanada flavors — meat, vegetarian, sweet. Crafted for taste, engineered for speed." />
+        <meta property="og:title" content="Products — HotFold Empanadas" />
+        <meta property="og:description" content="Twelve baked empanada flavors — meat, vegetarian, sweet. Crafted for taste, engineered for speed." />
+      </Helmet>
       <section className="bg-ink text-bone">
         <div className="container-x py-20 md:py-28">
           <p className="eyebrow eyebrow-gold">The Menu</p>
@@ -91,3 +88,5 @@ function ProductsPage() {
     </SiteLayout>
   );
 }
+
+export default ProductsPage;

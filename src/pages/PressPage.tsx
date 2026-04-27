@@ -1,18 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { ArrowUpRight } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
-export const Route = createFileRoute("/press")({
-  head: () => ({
-    meta: [
-      { title: "Press & News — HotFold" },
-      { name: "description", content: "Press releases, updates and news from the HotFold empanada kiosk concept." },
-      { property: "og:title", content: "HotFold Press & News" },
-      { property: "og:description", content: "Latest from HotFold." },
-    ],
-  }),
-  component: PressPage,
-});
+
+
 
 const posts = [
   { date: "Apr 2026", tag: "Press release", title: "HotFold launches the empanada kiosk concept in Budapest", excerpt: "A new category of premium street food arrives in Hungary's capital." },
@@ -24,6 +15,12 @@ const posts = [
 function PressPage() {
   return (
     <SiteLayout>
+      <Helmet>
+        <title>Press & News — HotFold</title>
+        <meta name="description" content="Press releases, updates and news from the HotFold empanada kiosk concept." />
+        <meta property="og:title" content="Press & News — HotFold" />
+        <meta property="og:description" content="Press releases, updates and news from the HotFold empanada kiosk concept." />
+      </Helmet>
       <section className="bg-ink text-bone">
         <div className="container-x py-20 md:py-28">
           <p className="eyebrow eyebrow-gold">Press & News</p>
@@ -65,3 +62,5 @@ function PressPage() {
     </SiteLayout>
   );
 }
+
+export default PressPage;

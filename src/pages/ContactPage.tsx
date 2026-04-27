@@ -1,20 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { useState } from "react";
 import { z } from "zod";
 import { CheckCircle2, Mail, Instagram, Linkedin } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — HotFold" },
-      { name: "description", content: "Get in touch with the HotFold team. Press, partnerships, and general inquiries." },
-      { property: "og:title", content: "Contact HotFold" },
-      { property: "og:description", content: "Say hello." },
-    ],
-  }),
-  component: ContactPage,
-});
+
+
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name required").max(100),
@@ -42,6 +34,12 @@ function ContactPage() {
 
   return (
     <SiteLayout>
+      <Helmet>
+        <title>Contact — HotFold</title>
+        <meta name="description" content="Get in touch with the HotFold team. Press, partnerships, and general inquiries." />
+        <meta property="og:title" content="Contact — HotFold" />
+        <meta property="og:description" content="Get in touch with the HotFold team. Press, partnerships, and general inquiries." />
+      </Helmet>
       <section className="bg-ink text-bone">
         <div className="container-x py-20 md:py-28">
           <p className="eyebrow eyebrow-gold">Contact</p>
@@ -110,3 +108,5 @@ function Field({ label, name, type = "text", required, textarea }: {
     </label>
   );
 }
+
+export default ContactPage;

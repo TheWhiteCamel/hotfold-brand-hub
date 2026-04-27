@@ -1,22 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { useState } from "react";
 import { z } from "zod";
 import { CheckCircle2, MessageSquare, Truck, Sparkles } from "lucide-react";
 import kioskImg from "@/assets/kiosk.jpg";
+import { Helmet } from "react-helmet-async";
 
-export const Route = createFileRoute("/events")({
-  head: () => ({
-    meta: [
-      { title: "Events & Kiosk Rental — HotFold" },
-      { name: "description", content: "Book the HotFold mobile empanada kiosk for festivals, corporate events and private parties." },
-      { property: "og:title", content: "Rent the HotFold Kiosk" },
-      { property: "og:description", content: "Mobile empanada kiosk for any event." },
-      { property: "og:image", content: kioskImg },
-    ],
-  }),
-  component: EventsPage,
-});
+
+
 
 const schema = z.object({
   name: z.string().trim().min(2).max(100),
@@ -48,6 +38,12 @@ function EventsPage() {
 
   return (
     <SiteLayout>
+      <Helmet>
+        <title>Events & Kiosk Rental — HotFold</title>
+        <meta name="description" content="Book the HotFold mobile empanada kiosk for festivals, corporate events and private parties." />
+        <meta property="og:title" content="Events & Kiosk Rental — HotFold" />
+        <meta property="og:description" content="Book the HotFold mobile empanada kiosk for festivals, corporate events and private parties." />
+      </Helmet>
       <section className="relative overflow-hidden bg-ink text-bone">
         <img src={kioskImg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
@@ -146,3 +142,5 @@ function Field({ label, name, type = "text", required }: { label: string; name: 
     </label>
   );
 }
+
+export default EventsPage;

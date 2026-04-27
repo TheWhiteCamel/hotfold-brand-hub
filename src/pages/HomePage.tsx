@@ -1,25 +1,23 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { ArrowRight, Snowflake, Flame, ShoppingBag, MapPin, Users, Sparkles, TrendingUp, Wrench } from "lucide-react";
 import heroImg from "@/assets/hero-empanada.jpg";
 import trioImg from "@/assets/empanadas-trio.jpg";
 import kioskImg from "@/assets/kiosk.jpg";
+import { Helmet } from "react-helmet-async";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "HotFold — The Empanada Kiosk Concept" },
-      { name: "description", content: "From Valencia memory to Budapest reality. A premium, baked-not-fried empanada kiosk concept built to scale." },
-      { property: "og:title", content: "HotFold — The Empanada Kiosk Concept" },
-      { property: "og:description", content: "Engineered for taste. Designed to scale. Discover the kiosk built around the empanada." },
-    ],
-  }),
-  component: HomePage,
-});
+
+
 
 function HomePage() {
   return (
     <SiteLayout>
+      <Helmet>
+        <title>HotFold — The Empanada Kiosk Concept</title>
+        <meta name="description" content="From Valencia memory to Budapest reality. A premium, baked-not-fried empanada kiosk concept built to scale." />
+        <meta property="og:title" content="HotFold — The Empanada Kiosk Concept" />
+        <meta property="og:description" content="From Valencia memory to Budapest reality. A premium, baked-not-fried empanada kiosk concept built to scale." />
+      </Helmet>
       {/* HERO */}
       <section className="relative overflow-hidden bg-ink text-bone">
         <div className="absolute inset-0 bg-blueprint-dark opacity-30" />
@@ -228,3 +226,5 @@ function HomePage() {
     </SiteLayout>
   );
 }
+
+export default HomePage;
