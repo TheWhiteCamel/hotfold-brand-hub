@@ -2,7 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
-const links = [
+type NavLinkItem = { to: string; label: string; end?: boolean };
+const links: NavLinkItem[] = [
   { to: "/", label: "Home", end: true },
   { to: "/products", label: "Products" },
   { to: "/franchise", label: "Franchise" },
@@ -10,7 +11,7 @@ const links = [
   { to: "/press", label: "Press" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
-] as const;
+];
 
 export function Header() {
   const [open, setOpen] = useState(false);
