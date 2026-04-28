@@ -3,15 +3,12 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-// GitHub Pages deploy:
-//   Build with:  GITHUB_PAGES=1 VITE_BASE=/repo-neve/ bun run build
-//   (replace /repo-neve/ with your actual repository name, keep the trailing slash)
+// Base path resolution:
+//   - Lovable preview / local dev / root-domain hosting: "/" (default)
+//   - GitHub Pages: set VITE_BASE=/hotfold-brand-hub/ at build time
 //
-// Lovable preview / local dev / root-domain hosting use base "/" automatically.
-// On GitHub Pages the site is served from /hotfold-brand-hub/.
-// Lovable preview / local dev override this with VITE_BASE=/ (set in dev script if needed),
-// or you can build locally for root hosting with: VITE_BASE=/ bun run build
-const base = process.env.VITE_BASE ?? (process.env.NODE_ENV === "production" ? "/hotfold-brand-hub/" : "/");
+// The GitHub Actions workflow sets VITE_BASE explicitly before `bun run build`.
+const base = process.env.VITE_BASE ?? "/";
 
 export default defineConfig({
   base,
